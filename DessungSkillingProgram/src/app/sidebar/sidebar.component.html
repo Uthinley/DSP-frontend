@@ -1,0 +1,179 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar elevation-4" style="background-color: #ED5D01;">
+    <!-- <aside class="main-sidebar sidebar-white-primary elevation-4 sidebar-light-primary"> -->
+        <!-- Brand Logo -->
+        <a routerLink="/home" class="brand-link">
+            <!-- <img src="assets/img/dsp.png" alt="ORS Logo" class="brand-image img-circle elevation-2"
+               style="opacity: .8"> -->
+            <span class="text-white font-weight-light">Dessung Skilling Programme</span>
+        </a>
+        <hr>
+    
+        <!-- Sidebar -->
+        <div class="sidebar">
+    
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                        <a class="nav-link text-white">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                System Admin
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" id="user">
+                             <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/user-group">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>User Group</p>
+                                </a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/user-setup">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>User Setup</p>
+                                </a>
+                            </li>
+    
+                            <li class="nav-item text-white">
+                                <a class="nav-link text-white" routerLink="/access-permission">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Access Permission </p>
+                                </a>
+                            </li>
+    
+                            <li class="nav-item text-white">
+                                <a class="nav-link text-white" routerLink="/password-policy">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Password Policy </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                        <a class="nav-link text-white">
+                            <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                            <i class="nav-icon fas fa-user-graduate"></i>
+                            <p>
+                                Student Manager
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" id="user">
+                             <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/add-student">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Student</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                        <a class="nav-link text-white">
+                            <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                            <!-- <i class="nav-icon far fa-id-card"></i> -->
+                            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                            <p>
+                                Trainer Manager
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" id="user">
+                             <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/add-trainer">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Trainer</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                        <a class="nav-link text-white">
+                            <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                            <!-- <i class="nav-icon far fa-id-card"></i> -->
+                            <i class="nav-icon fa fa-book"></i>
+                            <p>
+                                Course Manager
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" id="user">
+                             <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/course">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Course</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview" id="user">
+                            <li class="nav-item">
+                               <a class="nav-link text-white" routerLink="/course">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Student Course detail</p>
+                               </a>
+                           </li>
+                       </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                        <a class="nav-link text-white">
+                            <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>
+                                Master
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" id="user">
+                             <li class="nav-item">
+                                <a class="nav-link text-white" routerLink="/department">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Department</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview" id="user">
+                            <li class="nav-item">
+                               <a class="nav-link text-white" routerLink="/add-trainer">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Branch</p>
+                               </a>
+                           </li>
+                       </ul>
+                       <ul class="nav nav-treeview" id="user">
+                        <li class="nav-item">
+                           <a class="nav-link text-white" routerLink="/add-trainer">
+                               <i class="far fa-circle nav-icon"></i>
+                               <p>DSP centre</p>
+                           </a>
+                       </li>
+                        </ul>
+                        <ul class="nav nav-treeview" id="user">
+                            <li class="nav-item">
+                               <a class="nav-link text-white" routerLink="/add-trainer">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Training programme</p>
+                               </a>
+                           </li>
+                       </ul>
+                    </li>
+                
+                    <li class="nav-item" >
+                        <a class="nav-link text-white" routerLink="/change-password">
+                            <i class="far fa-user nav-icon"></i>
+                            <p>Change Password</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+    
