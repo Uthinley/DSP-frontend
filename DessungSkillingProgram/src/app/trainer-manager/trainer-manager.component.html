@@ -39,7 +39,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="trainerId">Trainer ID</label>
-                                    <input type="number" class="form-control" id="trainerId" formControlName="trainerId" placeholder="Enter citizenship identity card number">
+                                    <input type="text" class="form-control" id="trainerId" formControlName="trainerId" placeholder="Enter Trainer ID">
                                   </div>
                                   <div *ngIf="submitted && getter.trainerId.errors" class="invalid-feedback">
                                     <div *ngIf="getter.trainerId.errors.required">Please enter Trainer ID </div>
@@ -77,6 +77,7 @@
                                     <label for="designation">Designation</label>
                                     <input type="text" class="form-control" formControlName="designation" id="designation" placeholder="Enter Designation">
                                   </div>
+                                  <input type="number" formControlName="id" hidden>
                             </div>
                             <div class="col-sm-6">
                             <div class="form-group">
@@ -85,10 +86,10 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="department">Department</label>
+                                    <label for="department">Sector</label>
                                     <select class="form-control" #myselect id="department" formControlName="department" (change)="getSelectedBranch(myselect.value)">
                                         <option value="0">----Select----</option>
                                         <option *ngFor="let dept of departmentList" value="{{dept.id}}">{{dept.departmentName}}</option>
@@ -98,16 +99,16 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Branch</label>
-                                    <select class="form-control" #branchSelect formControlName="branchId" (change)="getSelectedTraining(branchSelect.value)">
+                                    <select class="form-control" #branchSelect formControlName="branchId">
                                       <option>----Select Branch----</option>
                                       <option *ngFor="let branch of branchList" value="{{branch.id}}">{{branch.branchName}}</option>
                                     </select>
                                   </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row">
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Training programme</label>
                                 <select class="form-control" formControlName="trainingProgramme">
@@ -115,8 +116,8 @@
                                   <option *ngFor="let trainingP of trainingProgrammeList" value="{{trainingP.id}}">{{trainingP.trainingProgramme}}</option>
                                 </select>
                               </div>
-                        </div>
-                          <div class="col-sm-6">
+                        </div> -->
+                          <!-- <div class="col-sm-6">
                               <div class="form-group">
                                   <label for="dspCentreId">DSP centre</label>
                                   <select class="form-control" id="dspCentreId" formControlName="dspCentreId">
@@ -124,12 +125,14 @@
                                       <option *ngFor="let dsp of dspCentreList" value="{{dsp.id}}">{{dsp.dspCentre}}</option>
                                   </select>
                                 </div>
-                          </div>
+                          </div> -->
                           
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                       
+                          <div class="form-group">
+                           
+                          </div>
                         </div>
                     </div>
                       </div>
@@ -160,35 +163,40 @@
                           </div> -->
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                          <table class="table table-hover text-nowrap">
+                        <div class="card-body table-responsive table-bordered mt-4">
+                          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover text-nowrap">
                             <thead>
                               <tr>
+                                <th></th>
                                 <th>Sl no</th>
                                 <th>Trainer ID</th>
                                 <th>Trainer Name</th>
                                 <th>Sex</th>
                                 <th>Date of joining</th>
                                 <th>Designation</th>
-                                <th>Department</th>
-                                <th>Branch</th>
-                                <th>Dsp centre</th>
-                                <th>Training programme</th>
+                                <!-- <th>Department</th> -->
+                                <!-- <th>Branch</th> -->
+                                <!-- <th>Dsp centre</th> -->
+                                <!-- <th>Training programme</th> -->
                                 <th>Trainer affiliation</th>
                               </tr>
                             </thead>
                             <tbody >
                               <tr *ngFor="let tlist of trainerList; let i =index; ">
+                                <td>
+                                  <a class="btn btn-sm" (click)="editByRow(tlist)"><i class="far fa-edit mr-1"></i></a>
+                                <a class="btn btn-sm test-danger" (click)="openModalDelete(tlist)" ><i class="fas fa-trash-alt"></i></a>
+                                </td>
                                 <td>{{i+1}}</td>
                                 <td>{{tlist.trainerId}}</td>
                                 <td>{{tlist.trainerName}}</td>
                                 <td>{{tlist.sex}}</td>
-                                <td>{{tlist.dateOfJoining}}</td>
+                                <td>{{tlist.dateOfJoining | date: 'shortDate'}}</td>
                                 <td>{{tlist.designation}}</td>
-                                <td>{{tlist.trainingProgramme.branch.department.departmentName}}</td>
-                                <td>{{tlist.trainingProgramme.branch.branchName}}</td>
-                                <td>{{tlist.dspCentre.dspCentre}}</td>
-                                <td>{{tlist.trainingProgramme.trainingProgramme}}</td>
+                                <!-- <td>{{tlist.trainingProgramme.branch.department.departmentName}}</td> -->
+                                <!-- <td>{{tlist.trainingProgramme.branch.branchName}}</td> -->
+                                <!-- <td>{{tlist.dspCentre.dspCentre}}</td> -->
+                                <!-- <td>{{tlist.trainingProgramme.trainingProgramme}}</td> -->
                                 <td>{{tlist.trainerAffiliation}}</td>
                               </tr>
                             </tbody>
@@ -199,6 +207,18 @@
                 </div>
             </div>
           </div>
+          <modal #myModalDelete>
+            <modal-header >
+                <h6 class="text-center"></h6>
+            </modal-header>
+              <modal-content>
+                <p>Are you sure to delete this Trainer?</p>
+              </modal-content>
+            <modal-footer>
+                <button class="btn btn-primary mr-3" (click)="onCloseHandled()">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="onDeleteTrainer()">Yes</button>
+            </modal-footer>
+        </modal>
         <router-outlet></router-outlet>
     </div>
     <!-- /.content-wrapper -->

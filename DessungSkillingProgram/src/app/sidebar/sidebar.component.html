@@ -1,5 +1,6 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar elevation-4" style="background-color: #ED5D01;">
+<!-- #ED5D01 -->
+<aside class="main-sidebar elevation-4 layout-fixed" style="background-color: #053A56;">
     <!-- <aside class="main-sidebar sidebar-white-primary elevation-4 sidebar-light-primary"> -->
         <!-- Brand Logo -->
         <a routerLink="/home" class="brand-link">
@@ -54,7 +55,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                    <li class="nav-item has-treeview" *ngIf="isAdmin || isSubAdmin">
                         <a class="nav-link text-white">
                             <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
                             <i class="nav-icon fas fa-user-graduate"></i>
@@ -63,17 +64,25 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" id="user">
+                        <!-- <ul class="nav nav-treeview" id="user">
                              <li class="nav-item">
                                 <a class="nav-link text-white" routerLink="/add-student">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Student</p>
+                                    <p>Student Management</p>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
+                        <ul class="nav nav-treeview" id="user">
+                            <li class="nav-item">
+                               <a class="nav-link text-white" routerLink="/tracer-study">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Tracer study</p>
+                               </a>
+                           </li>
+                       </ul>
                     </li>
 
-                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                    <li class="nav-item has-treeview" *ngIf="isAdmin ">
                         <a class="nav-link text-white">
                             <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
                             <!-- <i class="nav-icon far fa-id-card"></i> -->
@@ -93,13 +102,13 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview" *ngIf="isAdmin">
+                    <li class="nav-item has-treeview" *ngIf="isAdmin ">
                         <a class="nav-link text-white">
                             <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
                             <!-- <i class="nav-icon far fa-id-card"></i> -->
                             <i class="nav-icon fa fa-book"></i>
                             <p>
-                                Course Manager
+                                Training Programme
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -107,18 +116,10 @@
                              <li class="nav-item">
                                 <a class="nav-link text-white" routerLink="/course">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Course</p>
+                                    <p>Programme</p>
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav nav-treeview" id="user">
-                            <li class="nav-item">
-                               <a class="nav-link text-white" routerLink="/course">
-                                   <i class="far fa-circle nav-icon"></i>
-                                   <p>Student Course detail</p>
-                               </a>
-                           </li>
-                       </ul>
                     </li>
 
                     <li class="nav-item has-treeview" *ngIf="isAdmin">
@@ -131,37 +132,45 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview" id="user">
+                            <li class="nav-item">
+                               <a class="nav-link text-white" routerLink="/courseMaster">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Course </p>
+                               </a>
+                           </li>
+                       </ul>
+                        <ul class="nav nav-treeview" id="user">
                              <li class="nav-item">
                                 <a class="nav-link text-white" routerLink="/department">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Department</p>
+                                    <p>Sector</p>
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav nav-treeview" id="user">
+                        <!-- <ul class="nav nav-treeview" id="user">
                             <li class="nav-item">
-                               <a class="nav-link text-white" routerLink="/add-trainer">
+                               <a class="nav-link text-white" routerLink="/branch">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Branch</p>
                                </a>
                            </li>
-                       </ul>
+                       </ul> -->
                        <ul class="nav nav-treeview" id="user">
                         <li class="nav-item">
-                           <a class="nav-link text-white" routerLink="/add-trainer">
+                           <a class="nav-link text-white" routerLink="/branch">
                                <i class="far fa-circle nav-icon"></i>
                                <p>DSP centre</p>
                            </a>
                        </li>
                         </ul>
-                        <ul class="nav nav-treeview" id="user">
+                        <!-- <ul class="nav nav-treeview" id="user">
                             <li class="nav-item">
                                <a class="nav-link text-white" routerLink="/add-trainer">
                                    <i class="far fa-circle nav-icon"></i>
-                                   <p>Training programme</p>
+                                   <p>Course Level</p>
                                </a>
                            </li>
-                       </ul>
+                       </ul> -->
                     </li>
                 
                     <li class="nav-item" >

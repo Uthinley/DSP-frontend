@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper layout-fixed layout-navbar-fixed">
 
     <!-- Header menu -->
     <app-header></app-header>
@@ -24,6 +24,285 @@
               </div>
             </div>
           </section> 
+
+          <!-- Admin dasboard start -->
+          <section class="content" *ngIf="isAdmin ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-info">
+                    <div class="inner">
+                      <h3>{{obj1}}</h3>
+      
+                      <p>Trainers (Male - 1231, Female- 123)</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-bag"></i>
+                    </div>
+                    <a routerLink="/add-trainer" class="small-box-footer" *ngIf="isAdmin">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-success">
+                    <div class="inner">
+                      <h3>{{obj2}}<sup style="font-size: 20px"></sup></h3>
+      
+                      <p>Training Programme</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a routerLink="/course" class="small-box-footer" *ngIf="isAdmin">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-warning">
+                    <div class="inner">
+                      <h3>{{obj3}} </h3>
+      
+                      <p>Student (Male - 1231, Female- 123)</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+                    <a routerLink="/course" class="small-box-footer" *ngIf="isAdmin">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-danger">
+                    <div class="inner">
+                      <h3>{{obj4}}</h3>
+      
+                      <p>Users</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a routerLink="/user-setup" class="small-box-footer" *ngIf="isAdmin">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                <!-- ./col -->
+              </div>
+              
+             
+              <!-- end of search section -->
+              <hr>
+              
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card card-danger">
+                    <div class="card-header">
+                    <h3 class="card-title">Training programme by sector</h3>
+                    <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                    </button>
+                    </div>
+                    </div>
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <!-- <canvas id="sales-chart" height="300" style="display: block; height: 200px; width: 444px;" width="666" class="chartjs-render-monitor"></canvas> -->
+                    <canvas id="mychart" width="500" height="500" #canvas></canvas>
+                  
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card card-danger">
+                    <div class="card-header">
+                    <h3 class="card-title">Training programme by Status</h3>
+                    <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                    </button>
+                    </div>
+                    </div>
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <!-- <canvas id="sales-chart" height="300" style="display: block; height: 200px; width: 444px;" width="666" class="chartjs-render-monitor"></canvas> -->
+                    <canvas id="courseStatus" width="500" height="500" #canvas></canvas>
+                  
+                    </div>
+                    </div>
+                </div>
+                <!-- <a class="btn" (click)="viewChart()">here</a> -->
+              </div>
+
+              <!-- search row -->
+              <div class="row">
+                <form [formGroup]="searchForm" (ngSubmit)="searchStudent()">
+                <div class=" col-md-12 form-group">
+                  <label>Search student by name/CID/DID</label>
+              
+                  <div class="input-group input-group-lg">
+                      <input type="search" class="form-control form-control-lg" formControlName="studentInfo" placeholder="Search student by name/cid/did" >
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-lg btn-primary">
+                        <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                  </div>
+                </div>
+              </form>
+              </div>
+              <div class="row">
+                <div *ngIf="isValid">
+                  <section class="content">
+                      <div class="error-page">
+                        <h2 class="headline text-warning"></h2>
+                        <div class="error-content">
+                          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Details not found.</h3>
+                          <p>
+                            We could not find the details you were looking for.
+                            Meanwhile, you may try using the other inputs.
+                          </p>
+                        </div>
+                        <!-- /.error-content -->
+                      </div>
+                      <!-- /.error-page -->
+                    </section>
+                  <!-- <div class="alert alert-danger" role="alert">
+                      {{errorCidMessage}}
+                    </div> -->
+                </div>
+              </div>
+              <hr>
+              
+              
+              <div class="row table-responsive">
+                <div class="card">
+                  <h5 class="card-header bg-primary">Student Information</h5>
+                  <div class="card-body">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">CID</th>
+                          <th scope="col">DID</th>
+                          <th scope="col">Gender</th>
+                          <th scope="col">Mobile No</th>
+                          <th scope="col">DoB</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let std of studentDtls">
+                          <td>{{std.studentId}}</td>
+                          <td><a (click)="openModalStd(std, std.studentId)" class="btn text-primary">{{std.name}}</a></td>
+                          <td>{{std.cid}}</td>
+                          <td>{{std.dessungId}}</td>
+                          <td>{{std.sex}}</td>
+                          <td>{{std.mobileNo}}</td>
+                          <td>{{std.dob}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+             
+              <!-- Calender -->
+              <!-- <div class="row">
+                <div class="col-lg-6 col-6">
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary"></h6>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="small font-weight-bold">Tracer Study completion status <span class="float-right">{{tracerPercentage}}</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': tracerPercentage }" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <hr>
+                        <div class="card bg-gradient-info">
+                          <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
+                          <h3 class="card-title">
+                          <i class="far fa-calendar-alt"></i>
+                          Calendar
+                          </h3>
+                          
+                          <div class="card-tools">
+                          
+                          <div class="btn-group">
+                          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                          <i class="fas fa-bars"></i>
+                          </button>
+                          <div class="dropdown-menu" role="menu">
+                          <a href="#" class="dropdown-item">Add new event</a>
+                          <a href="#" class="dropdown-item">Clear events</a>
+                          <div class="dropdown-divider"></div>
+                          <a href="#" class="dropdown-item">View calendar</a>
+                          </div>
+                          </div>
+                          <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                          </button>
+                          <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                          <i class="fas fa-times"></i>
+                          </button>
+                          </div>
+                          
+                          </div>
+                          
+                          <div class="card-body pt-0">
+                          
+                          <div id="calendar" style="width: 100%"><div class="bootstrap-datetimepicker-widget usetwentyfour"><ul class="list-unstyled"><li class="show"><div class="datepicker"><div class="datepicker-days" style=""><table class="table table-sm"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Month"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Month">April 2022</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Month"></span></th></tr><tr><th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th></tr></thead><tbody><tr><td data-action="selectDay" data-day="03/27/2022" class="day old weekend">27</td><td data-action="selectDay" data-day="03/28/2022" class="day old">28</td><td data-action="selectDay" data-day="03/29/2022" class="day old">29</td><td data-action="selectDay" data-day="03/30/2022" class="day old">30</td><td data-action="selectDay" data-day="03/31/2022" class="day old">31</td><td data-action="selectDay" data-day="04/01/2022" class="day">1</td><td data-action="selectDay" data-day="04/02/2022" class="day weekend">2</td></tr><tr><td data-action="selectDay" data-day="04/03/2022" class="day weekend">3</td><td data-action="selectDay" data-day="04/04/2022" class="day">4</td><td data-action="selectDay" data-day="04/05/2022" class="day">5</td><td data-action="selectDay" data-day="04/06/2022" class="day active today">6</td><td data-action="selectDay" data-day="04/07/2022" class="day">7</td><td data-action="selectDay" data-day="04/08/2022" class="day">8</td><td data-action="selectDay" data-day="04/09/2022" class="day weekend">9</td></tr><tr><td data-action="selectDay" data-day="04/10/2022" class="day weekend">10</td><td data-action="selectDay" data-day="04/11/2022" class="day">11</td><td data-action="selectDay" data-day="04/12/2022" class="day">12</td><td data-action="selectDay" data-day="04/13/2022" class="day">13</td><td data-action="selectDay" data-day="04/14/2022" class="day">14</td><td data-action="selectDay" data-day="04/15/2022" class="day">15</td><td data-action="selectDay" data-day="04/16/2022" class="day weekend">16</td></tr><tr><td data-action="selectDay" data-day="04/17/2022" class="day weekend">17</td><td data-action="selectDay" data-day="04/18/2022" class="day">18</td><td data-action="selectDay" data-day="04/19/2022" class="day">19</td><td data-action="selectDay" data-day="04/20/2022" class="day">20</td><td data-action="selectDay" data-day="04/21/2022" class="day">21</td><td data-action="selectDay" data-day="04/22/2022" class="day">22</td><td data-action="selectDay" data-day="04/23/2022" class="day weekend">23</td></tr><tr><td data-action="selectDay" data-day="04/24/2022" class="day weekend">24</td><td data-action="selectDay" data-day="04/25/2022" class="day">25</td><td data-action="selectDay" data-day="04/26/2022" class="day">26</td><td data-action="selectDay" data-day="04/27/2022" class="day">27</td><td data-action="selectDay" data-day="04/28/2022" class="day">28</td><td data-action="selectDay" data-day="04/29/2022" class="day">29</td><td data-action="selectDay" data-day="04/30/2022" class="day weekend">30</td></tr><tr><td data-action="selectDay" data-day="05/01/2022" class="day new weekend">1</td><td data-action="selectDay" data-day="05/02/2022" class="day new">2</td><td data-action="selectDay" data-day="05/03/2022" class="day new">3</td><td data-action="selectDay" data-day="05/04/2022" class="day new">4</td><td data-action="selectDay" data-day="05/05/2022" class="day new">5</td><td data-action="selectDay" data-day="05/06/2022" class="day new">6</td><td data-action="selectDay" data-day="05/07/2022" class="day new weekend">7</td></tr></tbody></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Year"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Year">2022</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Year"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectMonth" class="month">Jan</span><span data-action="selectMonth" class="month">Feb</span><span data-action="selectMonth" class="month">Mar</span><span data-action="selectMonth" class="month active">Apr</span><span data-action="selectMonth" class="month">May</span><span data-action="selectMonth" class="month">Jun</span><span data-action="selectMonth" class="month">Jul</span><span data-action="selectMonth" class="month">Aug</span><span data-action="selectMonth" class="month">Sep</span><span data-action="selectMonth" class="month">Oct</span><span data-action="selectMonth" class="month">Nov</span><span data-action="selectMonth" class="month">Dec</span></td></tr></tbody></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Decade"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Decade">2020-2029</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Decade"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectYear" class="year old">2019</span><span data-action="selectYear" class="year">2020</span><span data-action="selectYear" class="year">2021</span><span data-action="selectYear" class="year active">2022</span><span data-action="selectYear" class="year">2023</span><span data-action="selectYear" class="year">2024</span><span data-action="selectYear" class="year">2025</span><span data-action="selectYear" class="year">2026</span><span data-action="selectYear" class="year">2027</span><span data-action="selectYear" class="year">2028</span><span data-action="selectYear" class="year">2029</span><span data-action="selectYear" class="year old">2030</span></td></tr></tbody></table></div><div class="datepicker-decades" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Century"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5">2000-2090</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Century"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectDecade" class="decade old" data-selection="2006">1990</span><span data-action="selectDecade" class="decade" data-selection="2006">2000</span><span data-action="selectDecade" class="decade" data-selection="2016">2010</span><span data-action="selectDecade" class="decade active" data-selection="2026">2020</span><span data-action="selectDecade" class="decade" data-selection="2036">2030</span><span data-action="selectDecade" class="decade" data-selection="2046">2040</span><span data-action="selectDecade" class="decade" data-selection="2056">2050</span><span data-action="selectDecade" class="decade" data-selection="2066">2060</span><span data-action="selectDecade" class="decade" data-selection="2076">2070</span><span data-action="selectDecade" class="decade" data-selection="2086">2080</span><span data-action="selectDecade" class="decade" data-selection="2096">2090</span><span data-action="selectDecade" class="decade old" data-selection="2106">2100</span></td></tr></tbody></table></div></div></li><li class="picker-switch accordion-toggle"></li></ul></div></div>
+                          </div>
+                          
+                          </div>
+                        
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-lg-6 col-6">
+                  <div class="card card-default">
+                    <div class="card-header">
+                    <h3 class="card-title">
+                    <i class="fas fa-bullhorn"></i>
+                      
+                    </h3>
+                    </div>
+                    
+                    <div class="card-body">
+                    <div class="callout callout-danger">
+                    <h5>Total dessup trained</h5>
+                    <p>23,000</p>
+                    </div>
+                    <div class="callout callout-info">
+                    <h5>Currently deployed </h5>
+                    <p>5,000</p>
+                    </div>
+                    <div class="callout callout-warning">
+                    <h5>Currently in another DSP</h5>
+                    <p>4000</p>
+                    </div>
+                    <div class="callout callout-success">
+                    <h5>Total unemployed</h5>
+                    <p>19000</p>
+                    </div>
+                    </div>
+                    
+                    </div>
+                </div>
+
+              </div> -->
+            </div>
+          </section>
+          <!-- Admin dashboard end -->
+
           <!-- Breadcrumb ends -->
           <div class="container-fluid">
             <div class="row">
@@ -36,9 +315,298 @@
               </div>
             </div>
           </div>
+
+          <!-- student dashboard -->
+          <section class="content" *ngIf="isStudent">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3">
+      
+                  <!-- Profile Image -->
+                  <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                      <div class="text-center">
+                        <span *ngIf="!profileDetail.avatar; else elseBlock">
+                          <img class="profile-user-img img-fluid img-circle" src="https://cdn0.iconfinder.com/data/icons/male-national-character-2/128/bhutan-bhutanese-national-costume-man-512.png" alt="N/A">
+                      </span>
+                      <ng-template #elseBlock> <img class="profile-user-img img-fluid img-circle" src="{{profileDetail.avatar}}" alt="profile picture not found"></ng-template>
+                    
+                        <!-- <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture"> -->
+                      </div>
+                      <h3 class="profile-username text-center">{{profileDetail.name}}</h3>
+      
+                      <p class="text-muted text-center">{{profileDetail.cid}}</p>
+      
+                      <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                          <b>Dessung ID</b> <a class="float-right">{{profileDetail.dessungId}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Date of Birth</b> <a class="float-right">{{profileDetail.dob}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Gender</b> <a class="float-right">{{profileDetail.sex}}</a>
+                        </li>
+                      </ul>
+      
+                      <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+      
+                  <!-- About Me Box -->
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">About Me</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <strong><i class="fas fa-book mr-1"></i> Email</strong>
+      
+                      <p class="text-muted">
+                        {{profileDetail.email}}
+                      </p>
+      
+                      <hr>
+      
+                      <strong><i class="fas fa-map-marker-alt mr-1"></i> Mobile Number</strong>
+      
+                      <p class="text-muted">{{profileDetail.mobileNo}}</p>
+      
+                      <hr>
+      
+                      <strong><i class="fas fa-pencil-alt mr-1"></i> Training Year</strong>
+      
+                      <p class="text-muted">
+                        {{profileDetail.trainingYear}}
+                      </p>
+      
+                      <hr>
+      
+                      <strong><i class="far fa-file-alt mr-1"></i> Marital Status</strong>
+      
+                      <p class="text-muted">{{profileDetail.maritalStatus}}</p>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                  <div class="card">
+                    <div class="card-header p-2">
+                      <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Course Taken</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Course Recommended</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li> -->
+                      </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="activity">
+                          <!-- Post -->
+                          <div class="post">
+                           
+                            <!-- /.user-block -->
+
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th style="width: 10px">#</th>
+                                  <th>Course Name</th>
+                                  <th>Course ID</th>
+                                  <th>Course Level</th>
+                                  <th>Course Date</th>
+                                  <th>Trainer Name</th>
+                                  <th>DSP centre</th>
+                                  <th>Training Programme</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let courses of profileDetail.courses; let i= index;">
+                                  <td>{{i+1}}</td>
+                                  <td>{{courses.courseName}}</td>
+                                  <td>{{courses.courseId}}</td>
+                                  <td>{{courses.courseLevel}}</td>
+                                  <td>{{courses.startDate}} - {{courses.endDate}}</td>
+                                  <td>{{courses.trainers.trainerName}}></td>
+                                  <td>{{courses.trainers.dspCentre.dspCentre}}</td>
+                                  <td>{{courses.trainers.trainingProgramme.trainingProgramme}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- /.post -->
+                        </div>
+
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="timeline">
+                          <!-- The timeline -->
+                          <div class="timeline timeline-inverse">
+                            <div class="alert alert-danger" role="alert">
+                              Electrical Installation  
+                            </div>
+                            <div class="alert alert-warning" role="alert">
+                               Residential Air Conditioning 
+                            </div>
+                            <div class="alert alert-info" role="alert">
+                              Fine Woodworking and Carpentry
+                            </div>
+                            
+                            <div class="alert alert-dark" role="alert">
+                              Construction, Multiskill
+                            </div>
+                           
+                          </div>
+                        </div>
+            
+                        <!-- /.tab-pane -->
+      
+                        <div class="tab-pane" id="settings">
+                          <form class="form-horizontal">
+                            <div class="form-group row">
+                              <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                              <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                              <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                              <div class="col-sm-10">
+                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-10">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                      </div>
+                      <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </section>
+          <modal #modalStdDtls>
+            <modal-header >
+                <h6 class="text-center"></h6>
+            </modal-header>
+              <modal-content>
+                <div class="row table-responsive">
+                  <div class="card">
+                    <h5 class="card-header bg-primary">Course Taken</h5>
+                    <div class="card-body">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Course ID</th>
+                            <th scope="col">Course Level</th>
+                            <th scope="col">Training Date</th>
+                            <th scope="col">Course Status</th>
+                            <th scope="col">Training Location</th>
+                            <th scope="col">Trainer</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let ct of coursesTakenList; let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{ct.courseMaster.courseName}}</td>
+                            <td>{{ct.courseMaster.courseId}}</td>
+                            <td>{{ct.courseMaster.courseLevelMaster.courseLvlName}}</td>
+                            <td>{{ct.startDate}} - {{ct.endDate}}</td>
+                            <td>{{ct.courseStatus}}</td>
+                            <td>{{ct.dspCentre.dspCentre}}</td>
+                            <td>{{ct.trainers.trainerName}}</td>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                
+              <div class="row table-responsive">
+                <div class="card">
+                  <h5 class="card-header bg-primary">Recommended course</h5>
+                  <div class="card-body">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <!-- <th scope="col">#</th> -->
+                          <th scope="col">Course Name</th>
+                          <th scope="col">Course ID</th>
+                          <th scope="col">Course Level</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <ng-container *ngFor="let rc of recommendedCourse;  ">
+                          <tr   *ngFor="let data of rc; let i= index">
+                          <!-- <div *ngFor="let data of rc; let i= index"> -->
+                              <!-- <td *ngIf="!courseIDTaken.includes(data.courseId)">{{i+1}}</td> -->
+                              <td *ngIf="!courseIDTaken.includes(data.courseId)">{{data.courseName}}</td>
+                              <td *ngIf="!courseIDTaken.includes(data.courseId)">{{data.courseId}}</td>
+                              <td *ngIf="!courseIDTaken.includes(data.courseId)">{{data.courseLevelMaster.courseLvlName}}</td>
+                            <!-- </div> -->
+                            </tr>
+                            <!-- {{rc}} -->
+                          </ng-container>
+                      
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+              </modal-content>
+            <modal-footer>
+                <!-- <button class="btn btn-primary" (click)="onCloseHandled()">close</button> -->
+            </modal-footer>
+        </modal>
+          <!-- student dashboard end -->
         <router-outlet></router-outlet>
     </div>
     <!-- /.content-wrapper -->
+
+    
+   
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

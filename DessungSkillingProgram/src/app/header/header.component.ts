@@ -26,9 +26,9 @@ export class HeaderComponent implements OnInit {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
     this.isLoggedIn = this.authService.isLoggedIn();
-    this.username = this.authService.getUserCode();
-    this.isPasswordExpiredValue = this.isPasswordExpired(this.username);
-    this.isFirstLoginValue = this.isFirstLogin(this.username);
+    this.username = this.authService.getUserName();
+    // this.isPasswordExpiredValue = this.isPasswordExpired(this.username);
+    // this.isFirstLoginValue = this.isFirstLogin(this.username);
   }
   logout() {
     this.authService.logout();
@@ -57,13 +57,14 @@ export class HeaderComponent implements OnInit {
     );
   }
   toggle(): void {
-    // const portalBody = $('#portalBody');
-    // if ( portalBody.hasClass( 'sidebar-collapse' )) {
-    //   portalBody.removeClass('sidebar-collapse');
-    //   portalBody.addClass('sidebar-open'); }
-    // else {
-    //   portalBody.addClass('sidebar-collapse');
-    // }
+    const portalBody = $('#portalBody');
+    if ( portalBody.hasClass( 'sidebar-collapse' )) {
+      portalBody.removeClass('sidebar-collapse');
+      portalBody.addClass('sidebar-open'); }
+    else {
+      portalBody.addClass('sidebar-collapse');
+
+    }
   }
 
 }

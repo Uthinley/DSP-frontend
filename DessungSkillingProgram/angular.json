@@ -29,10 +29,14 @@
               "./node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
               "./node_modules/admin-lte/dist/css/adminlte.min.css",
               "./node_modules/datatables.net-dt/css/jquery.dataTables.css",
-              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css"
+              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css",
+              "./node_modules/admin-lte/plugins/select2/css/select2.min.css",
+              "./node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
             ],
             "scripts": [
               "./node_modules/admin-lte/plugins/jquery/jquery.min.js",
+              "./node_modules/admin-lte/plugins/select2/js/select2.full.min.js",
+              "node_modules/admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js",
               "./node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js",
               "./node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
               "./node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
@@ -50,7 +54,7 @@
               "node_modules/datatables.net-buttons/js/buttons.colVis.js",
               "node_modules/datatables.net-buttons/js/buttons.flash.js",
               "node_modules/datatables.net-buttons/js/buttons.html5.js",
-              "node_modules/datatables.net-buttons/js/buttons.print.js"
+              "node_modules/datatables.net-buttons/js/buttons.print.js",
             ]
           },
           "configurations": {

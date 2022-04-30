@@ -15,9 +15,10 @@ export class AuthService {
   roleList = [];
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
+  @Output() cid: EventEmitter<string> = new EventEmitter();
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
-    userCode: this.getUserCode(),
+    username: this.getUserName(),
   };
   constructor(
     private httpClient: HttpClient,
@@ -32,8 +33,10 @@ export class AuthService {
         this.localStorage.store('refreshToken', data.refreshToken);
         this.localStorage.store('expiresAt', data.expiresAt);
         this.localStorage.store('roles', data.roles);
+        this.localStorage.store('cid', data.cid);
         this.loggedIn.emit(true);
         this.username.emit(data.username);
+        this.cid.emit(data.cid);
         return true;
       }));
   }
@@ -53,16 +56,20 @@ export class AuthService {
   logout() {
     this.globalService.postRequest(`${environment.apiUrl}/logout`, this.refreshTokenPayload);
     this.localStorage.clear('authenticationToken');
-    this.localStorage.clear('userCode');
+    this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
     this.localStorage.clear('roles');
+    this.localStorage.clear('cid');
   }
   getUserRole() {
     return this.localStorage.retrieve('roles');
   }
-  getUserCode() {
-    return this.localStorage.retrieve('userCode');
+  getUserCid(){
+    return this.localStorage.retrieve('cid');
+  }
+  getUserName() {
+    return this.localStorage.retrieve('username');
   }
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');

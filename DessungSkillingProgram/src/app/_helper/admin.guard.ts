@@ -18,7 +18,8 @@ export class AdminGuard implements CanActivate {
       for (let index = 0; index < roles.length; index++) {
         const role = roles[index].authority.slice(0, roles[index].authority.indexOf('-'));
         const adminRole = '1';
-        if (role === adminRole ){
+        const subAdminRole = '2';
+        if (role === adminRole || role ===  subAdminRole){
           return true;
         }
       }

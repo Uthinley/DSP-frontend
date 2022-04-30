@@ -28,6 +28,10 @@ export class GlobalService {
     return this.http.delete(this.apiUrl + url + `/${id}`);
   }
 
+  deleteRequestMultiple(url: string, id: any, id2: any): Observable<any> {
+    return this.http.delete(this.apiUrl + url + `/${id}`+`/${id2}`);
+  }
+
   /**
    * for refreshing page
    */

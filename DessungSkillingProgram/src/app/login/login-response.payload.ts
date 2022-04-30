@@ -4,5 +4,6 @@ export interface LoginResponse {
     refreshToken: string;
     expiresAt: Date;
     username: string;
+    cid: string;
     roles: string[];
 }
