@@ -40,7 +40,7 @@
                           <div class="form-group">
                             <label for="cid">Course ID</label>
                             <ng-select formControlName="courseId" [(ngModel)]="selectedCourseId" (ngModelChange)= "getCourseDetail($event)">
-                              <ng-option *ngFor="let clist of courseMasterList" [value]="clist.id">{{clist.courseId}}</ng-option>
+                              <ng-option *ngFor="let clist of courseMasterList" [value]="clist.id">{{clist.courseId}} - {{clist.courseName}}</ng-option>
                             </ng-select>
                             <!-- <select formControlName="courseId" #myselect (change)="getCourseDetail(myselect.value)">
                               <option *ngFor="let clist of courseMasterList" [value]="clist.id">{{clist.courseId}}</option>
@@ -64,7 +64,7 @@
                             <h6><span class="text-warning">Course Name :</span>  {{courseDetail.courseName}}</h6>
                             <h6><span class="text-warning">Course Level :</span> {{courseDetail.courseLevelMaster.courseLvlName}}</h6>
                             <h6><span class="text-warning">Sector  :</span> {{courseDetail.department.departmentName}}</h6>
-                            <h6><span class="text-warning">Branch :</span> {{courseDetail.branch.branchName}}</h6>
+                            <!-- <h6><span class="text-warning">Branch :</span> {{courseDetail.branch.branchName}}</h6> -->
                           </div>
                       <!-- <div class="row">
                         <div class="col-sm-12">

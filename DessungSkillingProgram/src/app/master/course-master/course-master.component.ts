@@ -49,7 +49,7 @@ export class CourseMasterComponent implements OnInit {
       courseId : ['', Validators.required],
       clevel : ['', Validators.required],
       sectorId: ['', Validators.required],
-      branchId : ['', Validators.required]
+      // branchId : ['', Validators.required]
     })
     this.getSectorlist();
     this.getCourseLevel();
@@ -98,7 +98,7 @@ export class CourseMasterComponent implements OnInit {
       courseName : object.courseName,
       courseId : object.courseId,
       clevel : object.courseLevelMaster.id,
-      branchId :object.branch.id,
+      // branchId :object.branch.id,
       sectorId: object.department.id,
       
     })

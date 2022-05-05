@@ -55,6 +55,9 @@ const routes: Routes = [
 {
   path: 'courseMaster', component: CourseMasterComponent, canActivate: [AdminGuard],
 },
+// {
+//   path: '',  loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+// },
   {
     path: '**', redirectTo : 'login',
   }

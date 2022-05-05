@@ -30,6 +30,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CourseMasterComponent } from './master/course-master/course-master.component';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
 // import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -73,7 +74,8 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

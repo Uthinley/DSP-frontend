@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
     this.canvas = document.getElementById('courseStatus');
     this.ctx = this.canvas.getContext('2d');
      const donutData        = {
-      labels: ["Completed", "On-going", "Future"],
+      labels: ["Completed",  "Future","On-going"],
       datasets: [
         {
           labels : "",
