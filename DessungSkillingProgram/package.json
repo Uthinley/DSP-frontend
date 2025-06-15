@@ -67,6 +67,7 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "puppeteer": "^19.0.0"
   }
 }
